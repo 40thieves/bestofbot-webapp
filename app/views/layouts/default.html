@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+{% include '../includes/head.html' %}
+
+<body ng-app="linksApp">
+	<section class="content">
+		<section class="container">
+			{% include '../includes/sidebar.html' %}
+
+			<div class="color-bar" aria-hidden="true">
+				<div id="color1"></div>
+				<div id="color2"></div>
+				<div id="color3"></div>
+				<div id="color4"></div>
+				<div id="color5"></div>
+				<div id="color6"></div>
+				<div id="color7"></div>
+				<div id="color8"></div>
+				<div id="color9"></div>
+				<div id="color10"></div>
+			</div>
+
+			{% block content %}{% endblock %}
+		</section>
+	</section>
+
+	{% if ( ! disableNg) %}
+		{% include '../includes/foot.html' %}
+	{% endif %}
+</body>
+</html>
