@@ -4,31 +4,36 @@ var fs = require('fs')
 ,	appPath = process.cwd()
 ;
 
-module.exports = function(db) {
-	function bootstrapModels() {
-		var models_path = appPath + '/app/models';
-		var walk = function(path) {
-			fs.readdirSync(path).forEach(function(file) {
-				var newPath = path + '/' + file;
-				var stat = fs.statSync(newPath);
+function walk(path) {
+	fs.readdirSync(path).forEach(function(file) {
+		var newPath = path + '/' + file;
+		var stat = fs.statSync(newPath);
 
-				if (stat.isFile()) {
-					if (/(.*)\.(js$)/.test(file)) {
-						require(newPath);
-					}
-					else if (stat.isDirectory()) {
-						walk(newPath);
-					}
-				}
-			});
-		};
-		walk(models_path);
+		if (stat.isFile()) {
+			if (/(.*)\.(js$)/.test(file)) {
+				require(newPath);
+			}
+			else if (stat.isDirectory()) {
+				walk(newPath);
+			}
+		}
+	});
+}
+
+module.exports = function(db, bot) {
+	function bootstrapModels() {
+		var modelsPath = appPath + '/app/models';
+		walk(modelsPath);
 	}
+
+	// function bootstrapEvents() {
+	// 	var eventsPath = appPath + '/app/events';
+	// 	walk(eventsPath);
+	// }
 
 	bootstrapModels();
 
-	// Bootstrap IRC
-	var bsb = new BestOfBot().join();
+	require(appPath + '/app/events/irc')(bot);
 
 	// Init express settings
 	var app = express();
