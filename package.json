@@ -22,7 +22,11 @@
     "connect-mongo": "~0.4.1",
     "swig": "~1.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "~3.8.6",
+    "gulp-nodemon": "~1.0.4",
+    "gulp-util": "~3.0.0"
+  },
   "scripts": {
     "test": "mocha"
   },
