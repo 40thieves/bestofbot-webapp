@@ -11,10 +11,6 @@ Web app for displaying the best of moments of [Daily Tech News Show](http://dail
 
 ### Usage
 
-#### Build
-
-`gulp build`
-
 #### Starting the server
 
 `gulp prod`
