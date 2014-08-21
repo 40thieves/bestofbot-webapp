@@ -8,5 +8,9 @@ module.exports = {
 	templateEngine: 'swig',
 
 	sessionSecret: '7ZlOZhWnwJRD',
-	sessionCollection: 'sessions'
+	sessionCollection: 'sessions',
+
+	youtube: {
+		api_key: 'YOUR-API-KEY-HERE'
+	}
 };
