@@ -1,4 +1,5 @@
 var _ = require('lodash')
+,	path = require('path')
 ,	fs = require('fs')
 ;
 
@@ -10,5 +11,6 @@ process.env.NODE_ENV = ~fs.readdirSync('./app/config/env').map(function(file) {
 // Extend base config with env config
 module.exports = _.extend(
 	require('./env/all'),
-	require('./env/' + process.env.NODE_ENV || {})
+	require('./env/' + process.env.NODE_ENV || {}),
+	require(path.normalize('../../.env.' + process.env.NODE_ENV + '.js'))
 );
