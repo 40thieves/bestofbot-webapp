@@ -1,4 +1,5 @@
 var mongoose = require('mongoose')
+,	pagination = require('mongoose-paginate')
 ,	Schema = mongoose.Schema
 ;
 
@@ -31,5 +32,7 @@ var VideoSchema = new Schema({
 		default: Date.now
 	}
 });
+
+VideoSchema.plugin(pagination);
 
 mongoose.model('Video', VideoSchema);

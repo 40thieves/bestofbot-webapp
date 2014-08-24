@@ -22,7 +22,8 @@
     "connect-mongo": "~0.4.1",
     "swig": "~1.4.1",
     "youtube-get": "0.0.2",
-    "moment": "~2.8.2"
+    "moment": "~2.8.2",
+    "mongoose-paginate": "~3.1.0"
   },
   "devDependencies": {
     "gulp": "~3.8.6",

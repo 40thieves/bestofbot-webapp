@@ -1,5 +1,14 @@
 {% extends 'layouts/default.html' %}
 
 {% block content %}
-	<section ui-view class="wrapper-app"></section>
+	<h1>Best of Bot</h1>
+
+	<ul>
+		{% for video in videos %}
+			<li>
+				<h3>{{video.description}}</h3>
+				<p>{{video.videoId}}</p>
+			</li>
+		{% endfor %}
+	</ul>
 {% endblock %}
