@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 var config = require('./app/config/config');
 var db = mongoose.connect(config.db);
 // Bootstrap IRC
-var bot = new bestofbot();
+var bot = new bestofbot(config.bestofbot);
 bot.join();
 
 var app = require('./app/config/system/bootstrap')(db, bot);

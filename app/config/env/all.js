@@ -10,6 +10,10 @@ module.exports = {
 	sessionSecret: '7ZlOZhWnwJRD',
 	sessionCollection: 'sessions',
 
+	bestofbot: {
+		
+	},
+
 	youtube: {
 		api_key: 'YOUR-API-KEY-HERE'
 	}
