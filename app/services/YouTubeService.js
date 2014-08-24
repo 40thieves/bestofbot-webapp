@@ -9,6 +9,24 @@ var extend = function(orig, extra) {
 	});
 };
 
+var YouTubeResult = function(result) {
+	this.result = result;
+};
+
+YouTubeResult.prototype.getActualStartTime = function() {
+	if ( ! this.result.liveStreamingDetails) {
+		throw new Error('Video not live streamed');
+	}
+
+	var liveStream = this.result.liveStreamingDetails;
+
+	if ( ! liveStream.actualStartTime) {
+		throw new Error('No actual start time');
+	}
+
+	return liveStream.actualStartTime;
+};
+
 var YouTubeService = function(options) {
 	if (options) {
 		if (options.search)
@@ -22,10 +40,10 @@ YouTubeService.prototype.options = {
 	search: {
 		part: 'id,snippet',
 		channelId: 'UC-vIANCum1yBw_4DeJImc0Q',
-		eventType: 'live',
-		type: 'video',
+		// eventType: 'live',
 		maxResults: 1,
-		order: 'date'
+		order: 'date',
+		type: 'video'
 	},
 	videoDetails: {
 		part: 'liveStreamingDetails',
@@ -45,7 +63,7 @@ YouTubeService.prototype.videoDetails = function(id, callback) {
 	this.youtube('videos', options, callback);
 };
 
-YouTubeService.prototype.fetchStartTime = function(callback) {
+YouTubeService.prototype.fetch = function(callback) {
 	var self = this;
 
 	this.search(function(err, data) {
@@ -57,20 +75,16 @@ YouTubeService.prototype.fetchStartTime = function(callback) {
 
 		self.videoDetails(data.items[0].id.videoId, function(err, data) {
 			if (err)
-				return callback(err);
+				return callback(new Error('No video found'));
 
-			return callback(null, self.parseActualStartTime(data));
+			var result = new YouTubeResult(data.items[0]);
+
+			return callback(null, result);
 		});
 	});
 };
 
-YouTubeService.prototype.parseActualStartTime = function(data) {
-	var details = data.items[0].liveStreamingDetails;
-
-	if ( ! details.actualStartTime)
-		return null;
-
-	return details.actualStartTime;
+module.exports = {
+	Service: YouTubeService,
+	Result: YouTubeResult
 };
-
-module.exports = YouTubeService;
