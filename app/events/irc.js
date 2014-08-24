@@ -1,9 +1,6 @@
-var YT = require('../services/YouTubeService.js')
+var YT = require('../services/YouTubeService.js').Service
 ,	TimestampCalc = require('../services/TimestampCalcService.js')
 ;
-
-// YT check service
-// Timestamp calc service
 
 module.exports = function(bot) {
 	var yt = new YT();
@@ -12,10 +9,19 @@ module.exports = function(bot) {
 	bot.on('message', function() {
 		// console.log('succ!');
 
-		yt.fetchStartTime(function(err, startTime) {
+		yt.fetch(function(err, result) {
 			if (err) {
 				console.log('Err:', err.message);
 				return false;
+			}
+
+			var startTime;
+
+			try {
+				startTime = result.getActualStartTime();
+			}
+			catch(e) {
+				console.log('Err:', e.message);
 			}
 
 			var timestamp = timestampCalc.calcTimeDiff(startTime);
