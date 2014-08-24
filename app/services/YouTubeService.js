@@ -27,6 +27,10 @@ YouTubeResult.prototype.getActualStartTime = function() {
 	return liveStream.actualStartTime;
 };
 
+YouTubeResult.prototype.getVideoId = function() {
+	return this.result.id;
+};
+
 var YouTubeService = function(options) {
 	if (options) {
 		if (options.search)

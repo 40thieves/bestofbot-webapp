@@ -1,12 +1,15 @@
 var YT = require('../services/YouTubeService.js').Service
 ,	TimestampCalc = require('../services/TimestampCalcService.js')
+
+,	mongoose = require('mongoose')
+,	Video = mongoose.model('Video')
 ;
 
 module.exports = function(bot) {
 	var yt = new YT();
 	var timestampCalc = new TimestampCalc();
 
-	bot.on('message', function() {
+	bot.on('message', function(message, user, channel) {
 		// console.log('succ!');
 
 		yt.fetch(function(err, result) {
@@ -15,8 +18,9 @@ module.exports = function(bot) {
 				return false;
 			}
 
-			var startTime;
+			var videoId = result.getVideoId();
 
+			var startTime;
 			try {
 				startTime = result.getActualStartTime();
 			}
@@ -25,7 +29,23 @@ module.exports = function(bot) {
 			}
 
 			var timestamp = timestampCalc.calcTimeDiff(startTime);
-			console.log(timestamp);
+
+			var video = new Video({
+				videoId: videoId,
+				timestamp: timestamp,
+				description: message,
+				user: user
+			});
+
+			video.save(function(err, saved) {
+				if (err) {
+					console.log(err.message);
+				}
+
+				console.log('Saved!');
+
+				bot.send('Best of moment saved!', channel);
+			});
 		});
 	});
 };
