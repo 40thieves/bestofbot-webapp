@@ -1,0 +1,57 @@
+/*********************
+COLORS
+*********************/
+
+$black:				#000;
+$white:				#fff;
+$dark-grey:			#444444;
+$med-grey:			#797979;
+$light-med-grey:	#9eabb3;
+$light-grey:		#e7e7e8;
+$lighter-grey:		#efefef;
+$lightest-grey:		#f7fafb;
+
+$light-green:		#8dc63f;
+$dark-green:		#00753d;
+$turqoise:			#16a796;
+$light-blue:		#1a82c5;
+$blue:				#1990db;
+$dark-purple:		#653090;
+$light-purple:		#9d316f;
+$pink:				#f01d4f;
+$light-red:			#ed1c24;
+$orange:			#f26c25;
+$yellow:			#facc10;
+
+$text-color:					$dark-grey;
+
+$main-header-color:				$white;
+
+$nav-color: 					$dark-grey;
+$nav-highlight-color:			$blue;
+
+$link-color:					$blue;
+$link-highlight-color:			darken($link-color, 9%);
+
+$select-blue: 					lighten($blue, 10%);
+$highlight-color:				#ffc336;
+
+/*********************
+TYPOGRAPHY
+*********************/
+
+$roboto:			"Roboto", Helvetica, Arial, sans-serif;
+$sans-serif:		"Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif:				"Georgia", Cambria, Times New Roman, Times, serif;
+
+/*********************
+SIZES
+*********************/
+
+$laptop: 1199px;
+$tablet: 1024px;
+$mobile: 480px;
+
+$laptop-end: $laptop + 1;
+$tablet-end: $tablet + 1;
+$mobile-end: $mobile + 1;
