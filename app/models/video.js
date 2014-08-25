@@ -11,10 +11,10 @@ var VideoSchema = new Schema({
 		type: String,
 		required: true
 	},
-	timestamp: {
-		type: String,
-		required: true
-	},
+	// timestamp: {
+	// 	type: String,
+	// 	required: true
+	// },
 	description: {
 		type: String,
 		trim: true

@@ -32,7 +32,7 @@ module.exports = function(bot) {
 
 			var video = new Video({
 				videoId: videoId,
-				timestamp: timestamp,
+				// timestamp: timestamp,
 				description: message,
 				user: user
 			});
