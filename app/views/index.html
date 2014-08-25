@@ -3,12 +3,26 @@
 {% block content %}
 	<h1>Best of Bot</h1>
 
-	<ul>
-		{% for video in videos %}
-			<li>
-				<h3>{{video.description}}</h3>
-				<p>{{video.videoId}}</p>
-			</li>
-		{% endfor %}
-	</ul>
+	<div class="col-lg-offset-2 col-lg-10">
+		<ul class="media-list">
+			{% for video in videos %}
+				<li class="media">
+					<div class="media-body col-lg-2 pull-left">
+						<h4 class="media-heading">{{video.description}}</h4>
+						<p>Submitted by {{video.user}}</p>
+					</div>
+					<a href="" class="media-object">
+						<iframe
+							id="player"
+							type="text/html"
+							width="640"
+							height="390"
+							src="http://www.youtube.com/embed/{{video.videoId}}?enablejsapi=1"
+							frameborder="0"
+							allowfullscreen></iframe>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
 {% endblock %}
