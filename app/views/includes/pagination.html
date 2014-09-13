@@ -1,0 +1,9 @@
+<ul class="pagination">
+	<li class="{% if currentPage == 1 %}disabled{% endif %}"><a href="">&laquo;</a></li>
+	{% for page in pages %}
+		<li class="{% if currentPage == page.number %}active{% endif %}">
+			<a href="{{page.url}}">{{page.number}}</a>
+		</li>
+	{% endfor %}
+	<li class="{% if currentPage == pageCount %}disabled{% endif %}"><a href="">&raquo;</a></li>
+</ul>
