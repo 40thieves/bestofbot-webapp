@@ -42,9 +42,8 @@ var YouTubeService = function(options) {
 
 YouTubeService.prototype.options = {
 	search: {
-		part: 'id,snippet',
-		channelId: 'UC-vIANCum1yBw_4DeJImc0Q',
-		// eventType: 'live',
+		part: 'snippet',
+		channelId: 'UCENCjo56uZ0pBPO0FHUWM1g',
 		maxResults: 1,
 		order: 'date',
 		type: 'video'
@@ -76,6 +75,9 @@ YouTubeService.prototype.fetch = function(callback) {
 
 		if ( ! data.items.length)
 			return callback(new Error('No search results'));
+
+		if (data.items[0].snippet.liveBroadcastContent != 'live')
+			return callback(new Error('Not live yet!'));
 
 		self.videoDetails(data.items[0].id.videoId, function(err, data) {
 			if (err)
