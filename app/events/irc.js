@@ -18,34 +18,31 @@ module.exports = function(bot) {
 				return false;
 			}
 
-			var videoId = result.getVideoId();
-
-			var startTime;
 			try {
-				startTime = result.getActualStartTime();
+				var videoId = result.getVideoId()
+				,	startTime = result.getActualStartTime()
+				,	timestamp = timestampCalc.calcTimeDiff(startTime)
+				,	video
+				;
+
+				video = new Video({
+					videoId: videoId,
+					// timestamp: timestamp,
+					description: message,
+					user: user
+				}).save(function(err, saved) {
+					if (err) {
+						console.log(err.message);
+					}
+
+					console.log('Saved!');
+
+					bot.send('Best of moment saved!', channel);
+				});
 			}
 			catch(e) {
 				console.log('Err:', e.message);
 			}
-
-			var timestamp = timestampCalc.calcTimeDiff(startTime);
-
-			var video = new Video({
-				videoId: videoId,
-				// timestamp: timestamp,
-				description: message,
-				user: user
-			});
-
-			video.save(function(err, saved) {
-				if (err) {
-					console.log(err.message);
-				}
-
-				console.log('Saved!');
-
-				bot.send('Best of moment saved!', channel);
-			});
 		});
 	});
 };
