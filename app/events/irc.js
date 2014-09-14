@@ -19,10 +19,11 @@ Listener.prototype.boot = function() {
 	this.yt = new YT();
 	this.timestamp = new TimestampCalc();
 
-	this.bot.on('message', this.messageEvent.bind(this));
+	this.bot.on('message', this.message.bind(this));
+	this.bot.on('raw-message', this.aboutMessage.bind(this));
 };
 
-Listener.prototype.messageEvent = function(message, user, channel) {
+Listener.prototype.message = function(message, user, channel) {
 	var self = this;
 
 	this.yt.fetch(function(err, result) {
@@ -61,6 +62,13 @@ Listener.prototype.messageEvent = function(message, user, channel) {
 			console.log('Err:', e.message);
 		}
 	});
+};
+
+Listener.prototype.aboutMessage = function(message, user, channel) {
+	// If mesage is addressed to the bot (either in a DM or a reply), send about message
+	if (/^bestofbot:? [aA]bout/.test(message) || channel == 'bestofbot') {
+		this.reply('Hi there! I\'m a bot that tracks best of moments on DTNS, check them out at URL_HERE', user);
+	}
 };
 
 Listener.prototype.reply = function(message, user) {
