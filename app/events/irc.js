@@ -6,43 +6,63 @@ var YT = require('../services/YouTubeService.js').Service
 ;
 
 module.exports = function(bot) {
-	var yt = new YT();
-	var timestampCalc = new TimestampCalc();
+	var listener = new Listener(bot);
+};
 
-	bot.on('message', function(message, user, channel) {
-		// console.log('succ!');
+var Listener = function(bot) {
+	this.bot = bot;
 
-		yt.fetch(function(err, result) {
-			if (err) {
-				console.log('Err:', err.message);
-				return false;
-			}
+	this.boot();
+};
 
-			try {
-				var videoId = result.getVideoId()
-				,	startTime = result.getActualStartTime()
-				,	timestamp = timestampCalc.calcTimeDiff(startTime)
-				,	video
-				;
+Listener.prototype.boot = function() {
+	this.yt = new YT();
+	this.timestamp = new TimestampCalc();
 
-				video = new Video({
-					videoId: videoId,
-					// timestamp: timestamp,
-					description: message,
-					user: user
-				}).save(function(err, saved) {
-					if (err) {
-						console.log(err.message);
-					}
+	this.bot.on('message', this.messageEvent.bind(this));
+};
 
-					console.log('Saved!');
+Listener.prototype.messageEvent = function(message, user, channel) {
+	var self = this;
 
-					bot.send('Best of moment saved!', channel);
-				});
-			}
-			catch(e) {
-				console.log('Err:', e.message);
-			}
-		});
+	this.yt.fetch(function(err, result) {
+		if (err) {
+			self.reply('Oh noes! ' + err.message, user);
+			console.log('Err:', err.message);
+			return;
+		}
+
+		try {
+			var videoId = result.getVideoId()
+			,	startTime = result.getActualStartTime()
+			,	timestamp = self.timestamp.calcTimeDiff(startTime)
+			,	video
+			;
+
+			console.log('Timestamp', timestamp);
+
+			video = new Video({
+				videoId: videoId,
+				// timestamp: timestamp,
+				description: message,
+				user: user
+			}).save(function(err, saved) {
+				if (err) {
+					self.reply('Oh noes! Save Failed');
+					console.log(err.message);
+				}
+
+				console.log('Saved!');
+
+				self.reply('Best of moment saved! Check it out at URL_HERE', user);
+			});
+		}
+		catch(e) {
+			console.log('Err:', e.message);
+		}
 	});
+};
+
+Listener.prototype.reply = function(message, user) {
+	this.bot.msg(message, user);
 };
