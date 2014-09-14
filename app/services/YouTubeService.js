@@ -43,7 +43,7 @@ var YouTubeService = function(options) {
 YouTubeService.prototype.options = {
 	search: {
 		part: 'snippet',
-		channelId: 'UCENCjo56uZ0pBPO0FHUWM1g',
+		channelId: 'UC-vIANCum1yBw_4DeJImc0Q',
 		maxResults: 1,
 		order: 'date',
 		type: 'video'
