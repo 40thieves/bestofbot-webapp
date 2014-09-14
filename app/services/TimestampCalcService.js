@@ -28,6 +28,9 @@ TimestampService.prototype.calcTimeDiff = function(videoStartStr) {
 
 	var diff = bestOfStart.diff(videoStart, 'seconds');
 
+	// Prevent 'negative' timestamps, and just return beginning of video
+	if (diff < 0) return '0';
+
 	var minsAgo = Math.floor(diff / 60);
 	var secsAgo = diff % 60;
 
