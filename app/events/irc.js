@@ -51,7 +51,7 @@ Listener.prototype.message = function(message, user, channel) {
 					console.log(err.message);
 				}
 
-				console.log('Saved!');
+				console.log('Saved! Video id:' + videoId + ' User: ' + user);
 
 				self.reply('Best of moment saved! Check it out at URL_HERE', user);
 			});
