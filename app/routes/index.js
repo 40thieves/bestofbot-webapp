@@ -3,4 +3,6 @@ module.exports = function(app) {
 	var index = require('../controllers/index');
 
 	app.get('/', index.index);
+
+	app.get('/about', index.about);
 };
