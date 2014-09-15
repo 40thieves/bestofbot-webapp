@@ -42,7 +42,7 @@ Listener.prototype.message = function(message, user, channel) {
 
 			video = new Video({
 				videoId: videoId,
-				// timestamp: timestamp,
+				timestamp: timestamp,
 				description: message,
 				user: user
 			}).save(function(err, saved) {
