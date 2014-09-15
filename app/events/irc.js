@@ -28,7 +28,7 @@ Listener.prototype.message = function(message, user, channel) {
 
 	this.yt.fetch(function(err, result) {
 		if (err) {
-			self.reply('Oh noes! ' + err.message, user);
+			self.reply('Oh no! ' + err.message, user);
 			console.log('Err:', err.message);
 			return;
 		}
@@ -40,8 +40,6 @@ Listener.prototype.message = function(message, user, channel) {
 			,	video
 			;
 
-			console.log('Timestamp', timestamp);
-
 			video = new Video({
 				videoId: videoId,
 				// timestamp: timestamp,
@@ -49,7 +47,7 @@ Listener.prototype.message = function(message, user, channel) {
 				user: user
 			}).save(function(err, saved) {
 				if (err) {
-					self.reply('Oh noes! Save Failed');
+					self.reply('Oh no! Save Failed');
 					console.log(err.message);
 				}
 
