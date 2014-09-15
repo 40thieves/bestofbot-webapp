@@ -3,7 +3,7 @@ var mongoose = require('mongoose')
 ,	Video = mongoose.model('Video')
 ;
 
-exports.render = function(req, res, next) {
+exports.index = function(req, res, next) {
 	var currentPage = req.query.page || 1;
 	var limit = req.query.limit || 5;
 
