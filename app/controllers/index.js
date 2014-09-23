@@ -30,7 +30,7 @@ exports.index = function(req, res, next) {
 			pageCount: pageCount,
 			itemCount: itemCount
 		});
-	});
+	}, { sortBy: { createdAt: -1 } }); // Sort reverse chronological order
 };
 
 exports.about = function(req, res, next) {
