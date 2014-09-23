@@ -3,5 +3,8 @@ module.exports = {
 	port: 2369,
 	app: {
 		name: 'Best Of Bot'
+	},
+	bestofbot: {
+		joinMessage: false
 	}
 };
