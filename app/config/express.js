@@ -8,7 +8,6 @@ var express = require('express')
 ,	cookieParser = require('cookie-parser')
 ,	bodyParser = require('body-parser')
 ,	methodOverride = require('method-override')
-,	favicon = require('serve-favicon')
 ,	flash = require('connect-flash')
 ,	helpers = require('view-helpers')
 ,	expressValidator = require('express-validator')
@@ -70,9 +69,6 @@ module.exports = function(app, db) {
 
 	// Use connect-flash for flash messages
 	app.use(flash());
-
-	// Favicon
-	app.use(favicon(config.root + '/public/img/favicon3.ico'));
 
 	// Static dir
 	app.use('/public', express.static(config.root + '/public'));
