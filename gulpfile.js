@@ -22,7 +22,7 @@ var paths = {
 	},
 	bower: {
 		dest: {
-			sass: 'public/scss/lib/'
+			sass: 'public/sass/lib/'
 		}
 	}
 };
