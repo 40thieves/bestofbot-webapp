@@ -9,11 +9,11 @@
 		<ul class="media-list">
 			{% for video in videos %}
 				<li class="media">
-					<div class="media-body col-lg-2 pull-left">
-						<h4 class="media-heading">{{video.description}}</h4>
-						<p>Submitted by {{video.user}}</p>
-					</div>
-					<a href="" class="media-object">
+					<a href="http://www.youtube.com/watch?v={{video.videoId}}" class="media-object">
+						<div class="media-body col-lg-2 pull-left">
+							<h4 class="media-heading">{{video.description}}</h4>
+							<p>Submitted by {{video.user}}</p>
+						</div>
 						<iframe
 							id="player"
 							type="text/html"
