@@ -8,27 +8,27 @@ Author: Ali Smith (alasdairsmith.org.uk)
 ///////////////
 
 // Core vars and mixins
-@import "lib/bootstrap-sass-only/sass/bootstrap/variables";
-@import "lib/bootstrap-sass-only/sass/bootstrap/mixins";
+@import "lib/bootstrap-sass-only/scss/bootstrap/variables";
+@import "lib/bootstrap-sass-only/scss/bootstrap/mixins";
 
-@import "lib/bootstrap-sass-only/sass/bootstrap/normalize";
+@import "lib/bootstrap-sass-only/scss/bootstrap/normalize";
 
 // Core CSS
-@import "lib/bootstrap-sass-only/sass/bootstrap/scaffolding";
-@import "lib/bootstrap-sass-only/sass/bootstrap/type";
-@import "lib/bootstrap-sass-only/sass/bootstrap/code";
-@import "lib/bootstrap-sass-only/sass/bootstrap/grid";
-@import "lib/bootstrap-sass-only/sass/bootstrap/tables";
-@import "lib/bootstrap-sass-only/sass/bootstrap/forms";
-@import "lib/bootstrap-sass-only/sass/bootstrap/buttons";
-@import "lib/bootstrap-sass-only/sass/bootstrap/utilities";
+@import "lib/bootstrap-sass-only/scss/bootstrap/scaffolding";
+@import "lib/bootstrap-sass-only/scss/bootstrap/type";
+@import "lib/bootstrap-sass-only/scss/bootstrap/code";
+@import "lib/bootstrap-sass-only/scss/bootstrap/grid";
+@import "lib/bootstrap-sass-only/scss/bootstrap/tables";
+@import "lib/bootstrap-sass-only/scss/bootstrap/forms";
+@import "lib/bootstrap-sass-only/scss/bootstrap/buttons";
+@import "lib/bootstrap-sass-only/scss/bootstrap/utilities";
 
 // Components
 
-@import "lib/bootstrap-sass-only/sass/bootstrap/navs";
-@import "lib/bootstrap-sass-only/sass/bootstrap/navbar";
-@import "lib/bootstrap-sass-only/sass/bootstrap/media";
-@import "lib/bootstrap-sass-only/sass/bootstrap/pagination";
+@import "lib/bootstrap-sass-only/scss/bootstrap/navs";
+@import "lib/bootstrap-sass-only/scss/bootstrap/navbar";
+@import "lib/bootstrap-sass-only/scss/bootstrap/media";
+@import "lib/bootstrap-sass-only/scss/bootstrap/pagination";
 
 //////////////////////////
 // Site Specific Styles //
