@@ -71,9 +71,8 @@ module.exports = function(app, db) {
 	// Use connect-flash for flash messages
 	app.use(flash());
 
-	// TODO: Add favicon
-	// // Favicon
-	// app.use(favicon('PATH TO FAVICON'));
+	// Favicon
+	app.use(favicon(config.root + '/public/img/favicon3.ico'));
 
 	// Static dir
 	app.use('/public', express.static(config.root + '/public'));
