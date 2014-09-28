@@ -4,6 +4,10 @@ module.exports = {
 		name: 'Best Of Bot'
 	},
 	bestofbot: {
+		host: 'irc.cordkillers.com',
+		channels: [
+			'#chat'
+		],
 		joinMessage: false
 	}
 };
