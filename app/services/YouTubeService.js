@@ -73,13 +73,21 @@ YouTubeService.prototype.fetch = function(callback) {
 		if (err)
 			return callback(err);
 
-		if ( ! data.items.length)
+		if ( ! data || ! data.items || ! data.items.length)
 			return callback(new Error('No search results'));
 
-		if (data.items[0].snippet.liveBroadcastContent != 'live')
+		var videoData = data.items[0];
+
+		if ( ! videoData.snippet || ! videoData.snippet.liveBroadcastContent)
+			return callback(new Error('Unknown error'));
+
+		if (videoData.snippet.liveBroadcastContent != 'live')
 			return callback(new Error('Not live yet!'));
 
-		self.videoDetails(data.items[0].id.videoId, function(err, data) {
+		if ( ! videoData.id || ! videoData.id.videoId)
+			return callback(new Error('Unknown error'));
+
+		self.videoDetails(videoData.id.videoId, function(err, data) {
 			if (err)
 				return callback(new Error('No video found'));
 
