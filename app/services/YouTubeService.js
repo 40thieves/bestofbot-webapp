@@ -28,6 +28,9 @@ YouTubeResult.prototype.getActualStartTime = function() {
 };
 
 YouTubeResult.prototype.getVideoId = function() {
+	if ( ! this.result.id)
+		throw new Error('No video id');
+
 	return this.result.id;
 };
 
