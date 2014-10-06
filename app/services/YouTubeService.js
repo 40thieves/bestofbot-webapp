@@ -73,21 +73,12 @@ YouTubeService.prototype.fetch = function(callback) {
 		if (err)
 			return callback(err);
 
-		if ( ! data || ! data.items || ! data.items.length)
-			return callback(new Error('No search results'));
+		var result = self.parseSearchResults(data);
 
-		var videoData = data.items[0];
+		if (result instanceof Error)
+			return callback(result);
 
-		if ( ! videoData.snippet || ! videoData.snippet.liveBroadcastContent)
-			return callback(new Error('Unknown error'));
-
-		if (videoData.snippet.liveBroadcastContent != 'live')
-			return callback(new Error('Not live yet!'));
-
-		if ( ! videoData.id || ! videoData.id.videoId)
-			return callback(new Error('Unknown error'));
-
-		self.videoDetails(videoData.id.videoId, function(err, data) {
+		self.videoDetails(result, function(err, data) {
 			if (err)
 				return callback(new Error('No video found'));
 
@@ -96,6 +87,24 @@ YouTubeService.prototype.fetch = function(callback) {
 			return callback(null, result);
 		});
 	});
+};
+
+YouTubeService.prototype.parseSearchResults = function(searchResults) {
+	if ( ! searchResults || ! searchResults.items || ! searchResults.items.length)
+		return new Error('No search results');
+
+	var searchResult = searchResults.items[0];
+
+	if ( ! searchResult.snippet || ! searchResult.snippet.liveBroadcastContent)
+		return new Error('Unknown error');
+
+	if (searchResult.snippet.liveBroadcastContent != 'live')
+		return new Error('Not live yet!');
+
+	if ( ! searchResult.id || ! searchResult.id.videoId)
+		return new Error('Unknown error');
+
+	return searchResult.id.videoId;
 };
 
 module.exports = {
