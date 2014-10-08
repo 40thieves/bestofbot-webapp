@@ -98,9 +98,6 @@ YouTubeService.prototype.parseSearchResults = function(searchResults) {
 
 	var searchResult = searchResults.items[0];
 
-	if ( ! searchResult.snippet || ! searchResult.snippet.liveBroadcastContent)
-		return new Error('Unknown error');
-
 	if ( ! searchResult.id || ! searchResult.id.videoId)
 		return new Error('Unknown error');
 
