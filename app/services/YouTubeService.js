@@ -1,4 +1,5 @@
 var youtubeApi = require('youtube-get')
+,	moment = require('moment')
 
 ,	config = require('../config/config')
 ;
@@ -114,7 +115,13 @@ YouTubeService.prototype.parseVideoResult = function(videoResult) {
 
 	var video = videoResult.items[0];
 
-	if ( ! video.liveStreamingDetails || ! video.liveStreamingDetails.actualStartTime)
+	if ( ! video.liveStreamingDetails || ! video.liveStreamingDetails.actualEndTime)
+		return new Error('Video is not live!');
+
+	var endTime = new moment(video.liveStreamingDetails.actualEndTime, moment.ISO_8601);
+	var now = new moment();
+
+	if (now.isAfter(endTime))
 		return new Error('Video is not live!');
 
 	return video;
