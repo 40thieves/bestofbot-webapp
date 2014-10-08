@@ -101,9 +101,6 @@ YouTubeService.prototype.parseSearchResults = function(searchResults) {
 	if ( ! searchResult.snippet || ! searchResult.snippet.liveBroadcastContent)
 		return new Error('Unknown error');
 
-	if (searchResult.snippet.liveBroadcastContent != 'live')
-		return new Error('Not live yet!');
-
 	if ( ! searchResult.id || ! searchResult.id.videoId)
 		return new Error('Unknown error');
 
