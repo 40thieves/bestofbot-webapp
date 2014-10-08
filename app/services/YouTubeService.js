@@ -85,7 +85,11 @@ YouTubeService.prototype.fetch = function(callback) {
 			if (err)
 				return callback(new Error('No video found'));
 
-			var result = new YouTubeResult(data.items[0]);
+			var video = self.parseVideoResult(data);
+			if (video instanceof Error)
+				return callback(video);
+
+			var result = new YouTubeResult(video);
 
 			return callback(null, result);
 		});
@@ -102,6 +106,18 @@ YouTubeService.prototype.parseSearchResults = function(searchResults) {
 		return new Error('Unknown error');
 
 	return searchResult.id.videoId;
+};
+
+YouTubeService.prototype.parseVideoResult = function(videoResult) {
+	if ( ! videoResult || ! videoResult.items || ! videoResult.items.length)
+		return new Error('No video found');
+
+	var video = videoResult.items[0];
+
+	if ( ! video.liveStreamingDetails || ! video.liveStreamingDetails.actualStartTime)
+		return new Error('Video is not live!');
+
+	return video;
 };
 
 module.exports = {
