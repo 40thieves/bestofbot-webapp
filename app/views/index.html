@@ -9,7 +9,7 @@
 		<ul class="media-list">
 			{% for video in videos %}
 				<li class="media">
-					<a href="http://www.youtube.com/watch?v={{video.videoId}}" class="media-object">
+					<a href="http://www.youtube.com/watch?v={{video.videoId}}#t={{video.timestamp}}" class="media-object">
 						<div class="media-body col-lg-2 pull-left">
 							<h4 class="media-heading">{{video.description}}</h4>
 							<p>Submitted by {{video.user}}</p>
@@ -19,7 +19,7 @@
 							type="text/html"
 							width="640"
 							height="390"
-							src="http://www.youtube.com/embed/{{video.videoId}}?enablejsapi=1"
+							src="http://www.youtube.com/embed/{{video.videoId}}#t={{video.timestamp}}?enablejsapi=1"
 							frameborder="0"
 							allowfullscreen></iframe>
 					</a>
