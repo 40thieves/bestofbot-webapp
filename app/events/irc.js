@@ -51,7 +51,7 @@ Listener.prototype.message = function(message, user, channel) {
 					console.log(err.message);
 				}
 
-				console.log('Saved! Video id:' + videoId + ' User: ' + user);
+				console.log('Saved! Video id:' + videoId + ' User: ' + user + ' Timestamp: ' + timestamp);
 
 				self.reply('Best of moment saved! Check it out at http://bestofbot.40thiev.es', user);
 			});
