@@ -16,7 +16,6 @@ exports.index = function(req, res, next) {
 		var pages = [];
 		for (i = 0; i < pageCount; i++) {
 			var pageNum = i + 1;
-
 			pages.push({
 				number: pageNum,
 				url: '?page=' + pageNum
@@ -28,7 +27,9 @@ exports.index = function(req, res, next) {
 			pages: pages,
 			currentPage: currentPage,
 			pageCount: pageCount,
-			itemCount: itemCount
+			itemCount: itemCount,
+			nextPage: pages[currentPage] || null,
+			prevPage: pages[currentPage - 2] || null
 		});
 	}, { sortBy: { createdAt: -1 } }); // Sort reverse chronological order
 };
