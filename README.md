@@ -2,18 +2,32 @@
 
 ### Web app showing best moments of DTNS, tracked by the best of bot
 
-Web app for displaying the best of moments of [Daily Tech News Show](http://dailytechnewsshow.com).
+Web app for displaying the best of moments of [Daily Tech News Show](http://dailytechnewsshow.com). Powered by [bestofbot IRC bot](https://github.com/40thieves/bestofbot).
+
+Listens for `!b` messages in the [irc.dtns.tv](http://irc.dtns.tv) chatroom, calculates the relative timestamp to the video start and stores in a MongoDB database. Best of moments are shown at [bestofbot.40thiev.es](http://bestofbot.40thiev.es), starting at the correct time.
 
 ### Installation
 
 * `git clone git@github.com:40thieves/bestofbot.git`
 * `npm install`
 
+### Building assets
+
+Assets (only [Bootstrap](http://getbootstrap.com/) at the moment) are provided by [Bower](http://bower.io). Download the assets by running:
+
+`gulp bower`
+
+Then build the Sass with:
+
+`gulp sass`
+
 ### Usage
 
-#### Starting the server
+#### Starting the bot and server
 
-`gulp prod`
+Start the bot listening to the chat room and start the web server by running:
+
+`gulp dev`
 
 ### License
 
