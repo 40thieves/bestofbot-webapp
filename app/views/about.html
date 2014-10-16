@@ -12,6 +12,8 @@
 
 		<p>To record a best of moment, join the chat room at <a href="http://irc.dtns.tv">irc.dtns.tv</a>, and use the <code>!b</code> identifier (or bangtag, as I'm calling it) followed by a short description. When it sees this it calculates a timestamp relative to the start of the show video. This timestamp is then used to generate an embedded Youtube video that starts at the correct time right here!</p>
 
+		<p><strong>Known issue: </strong>For some reason, YouTube's API (which is used to calculate the timestamp) is very slow to update when a video goes live. Because of this, triggering the bot within the first 3-5 minutes of the show will throw an error. Unfortunately, there's not much I can do to work around this, but if you have a solution please send a pull request!</p>
+
 		<hr>
 
 		<p>Created by <a href="http://alasdairsmith.co.uk">Ali Smith</a> (<a href="https://twitter.com/40_thieves">@40_thieves</a>). Source code for the <a href="https://github.com/40thieves/bestofbot-webapp">bot</a> and the <a href="https://github.com/40thieves/bestofbot">website frontend</a> are available on Github under a MIT license. If you find a bug, please let me know or on Twitter or via Github issues!</p>
