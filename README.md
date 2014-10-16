@@ -4,7 +4,7 @@
 
 Web app for displaying the best of moments of [Daily Tech News Show](http://dailytechnewsshow.com). Powered by [bestofbot IRC bot](https://github.com/40thieves/bestofbot).
 
-Listens for `!b` messages in the [irc.dtns.tv](http://irc.dtns.tv) chatroom, calculates the relative timestamp to the video start and stores in a MongoDB database. Best of moments are shown at [bestofbot.40thiev.es](http://bestofbot.40thiev.es), starting at the correct time.
+Listens for `!b` messages in the [irc.dtns.tv](http://irc.dtns.tv) chatroom, calculates the relative timestamp to the video start and stores in a MongoDB database. Best of moments are shown at [bestofbot.40thiev.es](http://dtns.bestofbot.com), starting at the correct time.
 
 ### Installation
 
