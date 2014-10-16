@@ -53,7 +53,7 @@ Listener.prototype.message = function(message, user, channel) {
 
 				console.log('Saved! Video id:' + videoId + ' User: ' + user + ' Timestamp: ' + timestamp);
 
-				self.reply('Best of moment saved! Check it out at http://bestofbot.40thiev.es', user);
+				self.reply('Best of moment saved! Check it out at http://dtns.bestofbot.com', user);
 			});
 		}
 		catch(e) {
@@ -65,7 +65,7 @@ Listener.prototype.message = function(message, user, channel) {
 Listener.prototype.aboutMessage = function(message, user, channel) {
 	// If mesage is addressed to the bot (either in a DM or a reply), send about message
 	if (/^bestofbot:? [aA]bout/.test(message) || channel == 'bestofbot') {
-		this.reply('Hi there! I\'m a bot that tracks best of moments on DTNS, check them out at http://bestofbot.40thiev.es', user);
+		this.reply('Hi there! I\'m a bot that tracks best of moments on DTNS, check them out at http://dtns.bestofbot.com', user);
 	}
 };
 
